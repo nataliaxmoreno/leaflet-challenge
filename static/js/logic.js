@@ -10,12 +10,14 @@ let OpenstreetMap = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.
 var Esri_NatGeoWorldMap = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/NatGeo_World_Map/MapServer/tile/{z}/{y}/{x}', {
     attribution: 'Tiles &copy; Esri &mdash; National Geographic, Esri, DeLorme, NAVTEQ, UNEP-WCMC, USGS, NASA, ESA, METI, NRCAN, GEBCO, NOAA, iPC',
     maxZoom: 16
-});
+}).addTo(myMap);
 
-var CartoDB_DarkMatter = L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
-	attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
+var Stamen_Toner = L.tileLayer('https://stamen-tiles-{s}.a.ssl.fastly.net/toner/{z}/{x}/{y}{r}.{ext}', {
+	attribution: 'Map tiles by <a href="http://stamen.com">Stamen Design</a>, <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a> &mdash; Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
 	subdomains: 'abcd',
-	maxZoom: 20
+	minZoom: 0,
+	maxZoom: 20,
+	ext: 'png'
 }).addTo(myMap);
 
 
@@ -23,8 +25,8 @@ var tectonicplates = new L.LayerGroup();
 var earthquakes = new L.LayerGroup();
 
 var baseMaps = {
-    "OpenstreetMap": OpenstreetMap,
-    "dark Map": CartoDB_DarkMatter,
+    "Open street Map": OpenstreetMap,
+    "grey Map": Stamen_Toner,
     "Natgeo Map": Esri_NatGeoWorldMap
 
 };
